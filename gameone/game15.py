@@ -142,9 +142,11 @@ def print_menu(exits):
     Where do you want to go?
     """
     print("You can:")
-    print("GO EAST to your personal tutor's office.")
-    print("GO WEST to the parking lot.")
-    print("GO SOUTH to MJ and Simon's room.")   
+
+    for direction, next_room in exits.items():
+        next_room = exit_leads_to(exits, direction)
+        print_menu_line(direction, next_room)
+
     print("Where do you want to go?")
 
 
