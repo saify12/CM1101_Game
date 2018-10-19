@@ -195,8 +195,10 @@ def menu(exits):
 
         # Check if the input makes sense (is valid exit)
         # If so, return the player's choice
-
-        return normalised_user_input    
+        if is_valid_exit(exits, normalised_user_input):
+            return normalised_user_input
+        else:
+            print()
 
    
 
