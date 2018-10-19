@@ -192,7 +192,7 @@ def menu(exits):
         normalised_user_input = normalise_input(user_input)
 
         # Check if the input makes sense (is valid exit)
-            # If so, return the player's choice
+        # If so, return the player's choice
 
         return normalised_user_input    
 

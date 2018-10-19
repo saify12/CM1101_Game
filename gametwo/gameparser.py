@@ -28,11 +28,12 @@ def filter_words(words, skip_words):
 
     """
 
+    n_words = []
     for char in words:
-    	if char in skip_words:
-    		words.remove(char)
+    	if char not in skip_words:
+    		n_words.append(char)
 
-    return words
+    return n_words
     
 
     
@@ -50,9 +51,9 @@ def remove_punct(text):
     'goSouTh'
     """
     no_punct = ""
-    for char in text:
-        if not (char in string.punctuation):
-            no_punct = no_punct + char
+    for ch in text:
+        if not (ch in string.punctuation):
+            no_punct = no_punct + ch
 
     return no_punct
 
@@ -86,9 +87,9 @@ def normalise_input(user_input):
     no_punct = remove_punct(user_input).lower()
 
     # remove unimportant words
-    removedUW = filter_words(no_punct)
+    normalised_words = filter_words(no_punct.split(), skip_words)
     
-    return removedUW
+    return normalised_words
 
 
 

@@ -201,13 +201,13 @@ def print_menu(exits, room_items, inv_items):
         # Print the exit name and where it leads to
         print_exit(direction, exit_leads_to(exits, direction))
 
-        for item in room_items:
-            print("TAKE " + item["id"].upper() + " to take " + item["name"])
+    for item in room_items:
+        print("TAKE " + item["id"].upper() + " to take " + item["name"])
 
-        for item in inv_items:
-            print("DROP " + item["id"].upper() + " to drop " + item["name"])
+    for item in inv_items:
+        print("DROP " + item["id"].upper() + " to drop " + item["name"])
 
-        print("What do you want to do?")
+    print("What do you want to do?")
 
    
 
@@ -251,31 +251,12 @@ def execute_take(item_id):
     there is no such item in the room, this function prints
     "You cannot take that."
     """
-    found_item = False
-    
-    for i in current_room["items"] :
-        if i["id"] == item_id :
-
-            # Check mass
-            mass = 0
-            
-            for x in inventory :
-                mass += x["mass"]
-
-            mass += i["mass"]
-
-            if mass >= 2100 :
-                print("You are carrying too many heavy things.")
-
-            else :
-                inventory.append(i)
-                current_room["items"].remove(i)
-
-                found_item = True
-                break
-        
-    if found_item == False :
-        print("You cannot take that.")  
+    for item in current_room["items"]:
+        if item_id == item["id"]:
+            inventory.append(item)
+            current_room["items"].remove(item)
+            return
+    print("You cannot take that.")
     
 
 def execute_drop(item_id):
@@ -364,7 +345,7 @@ def move(exits, direction):
     False
     """
 
-    # Next room to go to
+    # Next room to go 
     return rooms[exits[direction]]
 
 

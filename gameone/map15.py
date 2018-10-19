@@ -53,7 +53,7 @@ general office.""",
     # ADD EXITS HERE!
 
     "exits": {"south": "Reception",
-             "east": "the general office"}
+             "east": "Office"}
 }
 
 room_office = {
